@@ -1,19 +1,24 @@
 import time
 import unittest
+
+from os.path import dirname, join, realpath
+
 from sliding_window_max import sliding_window_max
+
+this_dir = realpath(dirname(__file__))
 
 class Test(unittest.TestCase):
     def test_sliding_window_max_large_input(self):
         arr = []
         k = 1000
 
-        with open("data/input.txt") as file:
+        with open(join(this_dir, "data/input.txt")) as file:
             for line in file:
                 arr.append(int(line.strip()))
 
         expected = []
 
-        with open("data/output.txt") as file:
+        with open(join(this_dir, "data/output.txt")) as file:
             for line in file:
                 expected.append(int(line.strip()))
 
