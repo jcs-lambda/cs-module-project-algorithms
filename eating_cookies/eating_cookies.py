@@ -4,20 +4,19 @@ Returns: an integer
 '''
 def eating_cookies(n, cache=None):
     # validate input
-    if n < 0:
-        raise(ValueError('n cannot be less than zero'))
+    if not isinstance(n, int):
+        raise(TypeError('n must be of type `int`'))
 
     # force use of cache
     if cache is None:
         return eating_cookies(n, [0 for _ in range(n+1)])
 
     # base cases
-    if n <= 1:
-        cache[n] = 1
-    elif n == 2:
-        cache[n] = 2
-    elif n == 3:
-        cache[n] = 4
+    # -n = 0, 0 = 1, 1 = 1
+    if n < 0:
+        return 0
+    elif n <= 1:
+        return 1
 
     # recursive cases
     # if not cached -> calculate and cache    
