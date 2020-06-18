@@ -2,12 +2,21 @@
 Input: a List of integers
 Returns: a List of integers
 '''
+
+
 def moving_zeroes(arr):
-    for i in range(len(arr)):
-        if arr[i] != 0:
-            arr.insert(0, arr.pop(i))
-    
+    left, right = 0, len(arr) - 1
+
+    while left < right:
+        if arr[left] == 0 and arr[right] != 0:
+            arr[left], arr[right] = arr[right], 0
+        if arr[left] != 0:
+            left = left + 1
+        if arr[right] == 0:
+            right = right - 1
+
     return arr
+
 
 if __name__ == '__main__':
     # Use the main function here to test out your implementation
