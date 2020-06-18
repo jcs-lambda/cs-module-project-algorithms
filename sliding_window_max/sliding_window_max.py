@@ -5,15 +5,13 @@ Returns: a List of integers
 
 
 def sliding_window_max(nums, k):
-    # initialize first window
+    # initialize first window and max
     window = nums[:k]
-    # get first max value
     current_max = max(window)
-    # store first max value
     maxes = [current_max]
 
-    # iterate over the rest of the values
-    for i, x in enumerate(nums[k:]):
+    # slide window
+    for x in nums[k:]:
         # add newest value to window
         window.append(x)
         # remove oldest value from window, and, 
@@ -21,7 +19,7 @@ def sliding_window_max(nums, k):
         # then recalculate the current max
         if window.pop(0) == current_max:
             current_max = max(window)
-        # oldest value wasn't max, check if newest value is max
+        # check if newest value is max
         elif x > current_max:
             current_max = x
         # store maximum for this window
@@ -29,12 +27,6 @@ def sliding_window_max(nums, k):
 
     return maxes
 
-
-    # maxes = [0] * (len(nums) - k + 1)
-    # for i in range(len(maxes)):
-    #     maxes[i] = max(nums[i:i+k])
-
-    # return maxes
 
 if __name__ == '__main__':
     # Use the main function here to test out your implementation 
